@@ -1,0 +1,51 @@
+@import "/src/common/styles/global.scss";
+
+.cardAuthInfo {
+  position: relative;
+  box-shadow: $card-box-shadow;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 8px;
+  padding: 1em 1.2em;
+  text-align: center;
+  &:hover {
+    box-shadow: $card-hover-box-shadow;
+  }
+}
+
+.avatarImg {
+  width: 110px;
+  height: 110px;
+  border-radius: 70px;
+}
+
+.button {
+  background-color: #49b1f5;
+  text-decoration: none;
+  display: block;
+  line-height: 2.4em;
+  font-size: 14px;
+  border-radius: 8px;
+  margin-top: 2em;
+  position: relative;
+}
+
+.button:hover {
+  background-color: rgb(229, 138, 26);
+}
+
+.buttonText {
+  box-sizing: border-box;
+  color: #ffffff;
+  font-weight: 600;
+  margin-left: 0.5em;
+}
+
+.faIcon {
+  font-weight: $faFontWeight;
+  width: 14px;
+}
+
+.authorName {
+  line-height: 2;
+  font-size: 1.1em;
+}

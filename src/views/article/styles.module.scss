@@ -1,0 +1,67 @@
+@import "/src/common/styles/global.scss";
+.header {
+  width: 100%;
+}
+
+.layout {
+  animation: bottom-top 1s;
+  display: flex;
+  margin: 0 auto;
+  padding: 2rem 15px;
+  max-width: 1200px;
+}
+
+@keyframes bottom-top {
+  0% {
+    margin-top: 23%;
+  }
+  100% {
+    margin-top: 0%;
+  }
+}
+
+.post {
+  box-shadow: $card-box-shadow;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 8px;
+  padding: 50px 40px;
+  margin-top: 20px;
+  width: 65%;
+
+  &:hover {
+    box-shadow: $card-hover-box-shadow;
+  }
+}
+
+.asideContent {
+  padding-left: 15px;
+  width: 35%;
+  margin-top: 20px;
+  box-sizing: border-box;
+}
+
+.stickyCardToc {
+  position: sticky;
+  top: 100px;
+  box-shadow: $card-box-shadow;
+  background: rgba(255, 255, 255, 1);
+  margin-top: 1rem;
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  font-size: 16px;
+  &:hover {
+    box-shadow: $card-hover-box-shadow;
+  }
+}
+
+.cardTocTitle {
+  content: "目录";
+  text-align: center;
+  font-size: 18px;
+}
+
+.markdownBody {
+  box-sizing: border-box;
+  min-width: 200px;
+  max-width: 980px;
+}

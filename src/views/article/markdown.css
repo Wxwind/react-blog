@@ -1,0 +1,30 @@
+.title-anchor:hover {
+  cursor: pointer;
+  background-color: rgb(208, 208, 208);
+}
+
+.title-anchor.title-level1 {
+  padding-left: 0em;
+}
+.title-anchor.title-level2 {
+  padding-left: 0em;
+}
+.title-anchor.title-level3 {
+  padding-left: 1em;
+}
+.title-anchor.title-level4 {
+  padding-left: 2em;
+}
+
+.markdown-body blockquote {
+  border-left: 0.2rem solid #1ba5ff;
+  background-color: rgba(73,177,245,0.1);
+}
+
+.markdown-body blockquote p{
+ padding: 0.5em 0;
+}
+
+.markdown-body h1{
+  text-align:center
+}

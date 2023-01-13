@@ -1,0 +1,48 @@
+@import "/src/common/styles/global.scss";
+
+.postPreview {
+  box-shadow: $card-box-shadow;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 8px;
+  width: 75%;
+  height: 13em;
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  overflow: hidden;
+  &:hover {
+    box-shadow: $card-hover-box-shadow;
+  }
+}
+
+.postImage {
+  height: 100%;
+  width: 100%;
+}
+
+.imageLink {
+  height: 100%;
+  width: 45%;
+}
+.postInfo {
+  width: 55%;
+  padding: 0 40px;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #000000;
+  font-size: 1.52em;
+  line-height: 1.4;
+  &:hover {
+    color: #11bcef;
+  }
+}
+
+.postDesc {
+  color: #4c4948;
+}
+.postMeta {
+  font-size: 80%;
+  color: #858585;
+}

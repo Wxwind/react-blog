@@ -1,0 +1,59 @@
+.nav {
+  text-align: right;
+  width: 80%;
+  margin: 0px auto;
+  padding: 10px;
+}
+
+.menuShowOn {
+  position: fixed;
+  width: 100%;
+  margin: 0px auto;
+  background-color: #65caf5;
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+
+.menuShowOff {
+  position: fixed;
+  width: 100%;
+  transform: translateY(-20px);
+  margin: 0px auto;
+  //top: -60px;
+  background-color: #65caf5;
+  opacity: 0;
+  transition: opacity 0.5s;
+  visibility: hidden;
+}
+
+.menuItem {
+  position: relative;
+  margin-left: 0px;
+  padding: 0px 10px;
+  text-decoration: none;
+  color: #ffffff;
+  &:hover {
+    color: #000000;
+  }
+}
+
+.activeTab {
+  color: #000000;
+}
+
+.underline {
+  position: absolute;
+  left: 50%;
+  bottom: -4px;
+  transform: translateX(-50%);
+  height: 4px;
+  width: 70%;
+  background: #29fd53;
+  opacity: 0;
+  transition: opacity 0.3s;
+  border-radius: 10px;
+
+  &.visiable {
+    opacity: 1;
+  }
+}
