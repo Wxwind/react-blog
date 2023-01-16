@@ -15,22 +15,32 @@ export default defineConfig({
   },
   server: {
     host: "0.0.0.0",
-    port: 5173,
+    port: 5174,
     proxy: {
       "/api": {
-        target: "",
+        target: "http://localhost:6211",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ""),
+      },
+      "/fileServer": {
+        target: "http://localhost:7123/static",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/fileServer/, ""),
       },
     },
   },
   preview: {
-    port: 4173,
+    port: 4174,
     proxy: {
       "/api": {
-        target: "",
+        target: "http://localhost:6211",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ""),
+      },
+      "/fileServer": {
+        target: "http://localhost:7123/static",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/fileServer/, ""),
       },
     },
   },

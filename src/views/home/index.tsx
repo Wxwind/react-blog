@@ -1,10 +1,26 @@
 import React, { useState, useEffect, useRef } from "react";
 import PostPreview from "./components/PostPreview";
 import styles from "./styles.module.scss";
-import img1 from "@/assets/images/mainbg-1.jpg";
-import img2 from "@/assets/images/mainbg-2.jpg";
+import useQuery from "@/utils/hooks/useQuery";
+import { getArticleList } from "@/api/articles";
+import Loading from "@/common/components/Loading";
+
+// type articlePreview = {
+//   title: string;
+//   particleId: number;
+//   imageURL: string;
+//   desc: string;
+//   publishTime: string;
+// };
 
 const Home = () => {
+  // const [articleList, setarticleList] = useState<articlePreview[]>([
+  //   { title: "在vue3+ts+vite中使用svg图片", particleId: 1, imageURL: img1, desc: "hello", publishTime: "2022-11-17" },
+  //   { title: "456", particleId: 2, imageURL: img2, desc: "hellodaswawfawgawfawgawesg", publishTime: "2021-09-06" },
+  // ]);
+
+  const [data, isError, isLoading] = useQuery(getArticleList);
+
   return (
     <div>
       {/*Header*/}
@@ -16,20 +32,21 @@ const Home = () => {
       <div className={styles.content}>
         {/*Posts Preview*/}
         <div className={styles.postsPreviw}>
-          <PostPreview
-            title={"123"}
-            particleId={1}
-            imageURL={img1}
-            desc={"hello"}
-            meta={{ publishTime: "2022-11-17" }}
-          />
-          <PostPreview
-            title={"456"}
-            particleId={2}
-            imageURL={img2}
-            desc={"hellodaswawfawgawfawgawesg"}
-            meta={{ publishTime: "2022-11-17" }}
-          />
+          {isError ? (
+            <div>加载文章出错，请刷新页面重试</div>
+          ) : isLoading ? (
+            <Loading />
+          ) : (
+            data?.map((article) => (
+              <PostPreview
+                particleId={article.particleId}
+                imageURL={article.imageURL}
+                title={article.title}
+                desc={article.desc}
+                publishTime={article.publishTime}
+              />
+            ))
+          )}
         </div>
       </div>
     </div>

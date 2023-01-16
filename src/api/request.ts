@@ -2,7 +2,7 @@ import axios, { type AxiosResponse, type AxiosRequestConfig } from "axios";
 import type { MyResponseType } from "@/api/types";
 
 const serve = axios.create({
-  baseURL: import.meta.env.REACT_APP_BASE_API,
+  baseURL: import.meta.env.VITE_APP_BASE_API,
   timeout: 5000,
 });
 
@@ -56,19 +56,13 @@ serve.interceptors.request.use(
 serve.interceptors.response.use(
   // 2xx 范围内的状态码都会触发该函数。
   (response: AxiosResponse<MyResponseType<any>>) => {
-    const { data, meta } = response.data;
+    const { meta } = response.data;
 
     console.log(`收到消息`);
     console.log(response);
-    if (meta.status === 200 || meta.status === 201) {
-      //这里选择不过滤meta信息，原因见上面request注释
+    if (meta.status === 200) {
       return response;
     } else {
-      if (meta.status === 400 && meta.msg == "无效token") {
-        //服务端token失效
-        console.log("登出");
-        return data;
-      }
       //服务器内部逻辑输出了非200的状态码
       return Promise.reject(new Error(meta.msg));
     }
@@ -79,8 +73,6 @@ serve.interceptors.response.use(
 
     console.log(error);
     if (response) {
-      // 请求已发出且收到回复，但不是2xx
-      errorHandle(response.status);
       return Promise.reject(response.data);
     } else {
       //服务端token失效
@@ -88,20 +80,3 @@ serve.interceptors.response.use(
     }
   }
 );
-
-function errorHandle(status: number) {
-  switch (status) {
-    case 401: //重定向
-      //切换到登录
-      break;
-    // 403 token过期
-    // 清除token并跳转登录页
-    case 403:
-      setTimeout(() => {
-        //切换到登录
-      }, 1000);
-      break;
-    default:
-      console.log("错误代码==>" + status);
-  }
-}

@@ -7,16 +7,14 @@ type props = {
   particleId: number;
   imageURL: string;
   desc: string;
-  meta: {
-    publishTime: string;
-  };
+  publishTime: string;
 };
 
 const getParticleUrl = (particleId: number) => {
   return `/article/${particleId}`;
 };
 
-function PostPreview({ title, particleId, imageURL, desc, meta }: props) {
+function PostPreview({ title, particleId, imageURL, desc, publishTime }: props) {
   const url = getParticleUrl(particleId);
 
   return (
@@ -28,7 +26,7 @@ function PostPreview({ title, particleId, imageURL, desc, meta }: props) {
         <Link to={url} className={styles.postTitle}>
           {title}
         </Link>
-        <div className={styles.postMeta}>发表于 {meta.publishTime}</div>
+        <div className={styles.postMeta}>发表于 {publishTime}</div>
         <div className={styles.postDesc}>{desc}</div>
       </div>
     </div>

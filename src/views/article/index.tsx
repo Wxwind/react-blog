@@ -1,11 +1,13 @@
 import { useParams } from "react-router-dom";
 import styles from "./styles.module.scss";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { marked } from "marked";
 import MarkdownNavbar from "markdown-navbar";
 import CardAuthInfo from "./components/CardAuthInfo";
+import { getArticleFileURL } from "@/api/articles";
 import "github-markdown-css/github-markdown.css";
 import "./markdown.css";
+import axios from "axios";
 
 const articles = new Map([
   ["1", "/posts/PBR光照计算公式介绍.md"],
@@ -16,17 +18,25 @@ const Article = () => {
   const { articleId } = useParams();
   const [currentArticle, setcurrentArticle] = useState("");
   const tocRef = useRef(null);
-  if (articleId === undefined) return <>404 not found</>;
-  const fileURL = articles.get(articleId);
-  if (fileURL) {
-    const getArticle = async (fileURL: string) => {
-      const res = await fetch(fileURL);
-      const text = await res.text();
-      setcurrentArticle(text);
+
+  useEffect(() => {
+    const getfile = async () => {
+      if (articleId === undefined) return;
+      let n = parseInt(articleId);
+      if (Number.isNaN(n)) return;
+      const res = await getArticleFileURL(n);
+      if (res.data) {
+        const fileURL = "/fileServer/" + res.data;
+        console.log(fileURL);
+
+        const file = await axios.get<string>(fileURL);
+        const text = await file.data;
+        setcurrentArticle(text);
+      }
     };
 
-    getArticle(fileURL);
-  }
+    getfile();
+  }, [articleId]);
 
   const htmlContent = marked.parse(currentArticle);
   return (

@@ -1,11 +1,4 @@
----
-title: PBR光照计算公式介绍
-date: 2021-09-06 19:06:11
-urlname: Physical-Based-Rendering-And-BRDF
-tags: PBR
-categories: 图形学
-cover: Cover.png
----
+# PBR光照计算公式介绍
 
 参考视频：  
 [图形 2.4 传统经验光照模型详解](https://www.bilibili.com/video/BV1B54y1j7zE)  

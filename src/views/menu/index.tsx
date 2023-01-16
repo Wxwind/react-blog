@@ -23,7 +23,6 @@ function Menu() {
 
   const onScroll = useThrottleFn(() => {
     const top = document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset;
-    console.log(top);
     setisShowOn(top < SHOW_MAX_TOP);
   }, 200);
 
@@ -43,6 +42,7 @@ function Menu() {
               to={menuItem.url}
               className={classNames(styles.menuItem, { [styles.activeTab]: activeTab === menuItem.name })}
               onClick={() => setactiveTab(menuItem.name)}
+              key={menuItem.url}
             >
               {menuItem.name}
               <span className={classNames(styles.underline, { [styles.visiable]: activeTab === menuItem.name })}></span>
