@@ -44,7 +44,6 @@ serve.interceptors.request.use(
   (config) => {
     console.log(`发送消息`);
     console.log(config);
-
     return config;
   },
   (error: any) => {
@@ -69,14 +68,6 @@ serve.interceptors.response.use(
   },
   //超出 2xx 范围的状态码都会触发该函数
   (error: any) => {
-    const { response } = error;
-
-    console.log(error);
-    if (response) {
-      return Promise.reject(response.data);
-    } else {
-      //服务端token失效
-      return Promise.reject(new Error("访问服务器被拒绝"));
-    }
+    return Promise.reject(new Error(error.message));
   }
 );

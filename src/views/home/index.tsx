@@ -25,7 +25,7 @@ const Home = () => {
     <div>
       {/*Header*/}
       <div className={styles.header}>
-        <h1 className={styles.title}>微夏丿风的成长之路</h1>
+        <h1 className={styles.title}>微夏丿风的个人空间</h1>
         <div className={styles.bgImage}></div>
       </div>
       {/*Content*/}
@@ -44,6 +44,7 @@ const Home = () => {
                 title={article.title}
                 desc={article.desc}
                 publishTime={article.publishTime}
+                key={article.particleId}
               />
             ))
           )}

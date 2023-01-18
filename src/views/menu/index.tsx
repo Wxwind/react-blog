@@ -12,8 +12,8 @@ const menuItems = [
     url: "/home",
   },
   {
-    name: "文章",
-    url: "/posts",
+    name: "档案",
+    url: "/about",
   },
 ];
 

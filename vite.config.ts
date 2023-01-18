@@ -5,7 +5,7 @@ import react from "@vitejs/plugin-react";
 // https://vitejs.dev/config/
 export default defineConfig({
   build: {
-    outDir: "/build",
+    outDir: "./build",
   },
   plugins: [react()],
   resolve: {
@@ -33,12 +33,12 @@ export default defineConfig({
     port: 4174,
     proxy: {
       "/api": {
-        target: "http://localhost:6211",
+        target: "http://121.41.118.167:6211",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ""),
       },
       "/fileServer": {
-        target: "http://localhost:7123/static",
+        target: "http://121.41.118.167:7123/static",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/fileServer/, ""),
       },

@@ -9,11 +9,6 @@ import "github-markdown-css/github-markdown.css";
 import "./markdown.css";
 import axios from "axios";
 
-const articles = new Map([
-  ["1", "/posts/PBR光照计算公式介绍.md"],
-  ["2", "/posts/在vue3-ts-vite中使用svg图片.md"],
-]);
-
 const Article = () => {
   const { articleId } = useParams();
   const [currentArticle, setcurrentArticle] = useState("");
@@ -26,7 +21,7 @@ const Article = () => {
       if (Number.isNaN(n)) return;
       const res = await getArticleFileURL(n);
       if (res.data) {
-        const fileURL = "/fileServer/" + res.data;
+        const fileURL = "/fileServer" + res.data;
         console.log(fileURL);
 
         const file = await axios.get<string>(fileURL);

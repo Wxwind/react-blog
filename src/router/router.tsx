@@ -31,7 +31,7 @@ const routes: RouteObject[] = [
       },
 
       {
-        path: "/posts",
+        path: "/about",
         element: (
           <LazyGuardRouter>
             <About />
