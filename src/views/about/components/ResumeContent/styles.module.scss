@@ -1,0 +1,38 @@
+.resumeContent {
+  margin-top: 30px;
+}
+
+.section {
+  display: flex;
+  padding-top: 10px;
+}
+
+.leftInfo {
+  width: 25%;
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #567087;
+}
+
+.rightInfo {
+  width: 75%;
+  text-align: left;
+}
+
+.list {
+}
+
+.listItem {
+  line-height: 2em;
+  font-size: 16px;
+}
+
+.href {
+  text-decoration: none;
+  color: black;
+  &:hover {
+    color: #567087;
+  }
+}

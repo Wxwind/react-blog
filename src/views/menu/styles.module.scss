@@ -7,15 +7,18 @@
 
 .menuShowOn {
   position: fixed;
+  top: 0;
   width: 100%;
   margin: 0px auto;
   background-color: #65caf5;
   opacity: 1;
   transition: opacity 0.5s;
+  z-index: 2;
 }
 
 .menuShowOff {
   position: fixed;
+  top: 0;
   width: 100%;
   transform: translateY(-20px);
   margin: 0px auto;

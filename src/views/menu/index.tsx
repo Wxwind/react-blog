@@ -12,7 +12,7 @@ const menuItems = [
     url: "/home",
   },
   {
-    name: "档案",
+    name: "简历",
     url: "/about",
   },
 ];

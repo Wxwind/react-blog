@@ -14,11 +14,6 @@ import Loading from "@/common/components/Loading";
 // };
 
 const Home = () => {
-  // const [articleList, setarticleList] = useState<articlePreview[]>([
-  //   { title: "在vue3+ts+vite中使用svg图片", particleId: 1, imageURL: img1, desc: "hello", publishTime: "2022-11-17" },
-  //   { title: "456", particleId: 2, imageURL: img2, desc: "hellodaswawfawgawfawgawesg", publishTime: "2021-09-06" },
-  // ]);
-
   const [data, isError, isLoading] = useQuery(getArticleList);
 
   return (
@@ -49,6 +44,12 @@ const Home = () => {
             ))
           )}
         </div>
+      </div>
+      {/*ICP*/}
+      <div className={styles.icp}>
+        <a href="http://beian.miit.gov.cn/" className={styles.icphref}>
+          浙ICP备2023001363号-1
+        </a>
       </div>
     </div>
   );

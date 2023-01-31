@@ -1,13 +1,14 @@
 import { defineConfig } from "vite";
 import path from "path";
 import react from "@vitejs/plugin-react";
+import removeConsole from "vite-plugin-remove-console";
 
 // https://vitejs.dev/config/
 export default defineConfig({
   build: {
     outDir: "./build",
   },
-  plugins: [react()],
+  plugins: [react(), removeConsole()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
@@ -18,12 +19,12 @@ export default defineConfig({
     port: 5174,
     proxy: {
       "/api": {
-        target: "http://localhost:6211",
+        target: "http://121.41.118.167:6211",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ""),
       },
       "/fileServer": {
-        target: "http://localhost:7123/static",
+        target: "http://121.41.118.167:7123/static",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/fileServer/, ""),
       },

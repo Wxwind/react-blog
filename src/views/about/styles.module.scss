@@ -1,0 +1,28 @@
+@import "/src/common/styles/global.scss";
+
+.bgImage {
+  width: 100%;
+  background: #0ef2f2;
+}
+
+.download {
+  position: relative;
+  text-align: center;
+  box-sizing: border-box;
+  padding-top: 67.2px;
+}
+
+.resume {
+  position: relative;
+  box-sizing: border-box;
+  box-shadow: $card-box-shadow;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 8px;
+  padding: 1em 1.2em;
+  margin: 1em auto;
+  width: 60%;
+  text-align: center;
+  &:hover {
+    box-shadow: $card-hover-box-shadow;
+  }
+}

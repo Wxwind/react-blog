@@ -22,7 +22,6 @@ const Article = () => {
       const res = await getArticleFileURL(n);
       if (res.data) {
         const fileURL = "/fileServer" + res.data;
-        console.log(fileURL);
 
         const file = await axios.get<string>(fileURL);
         const text = await file.data;
