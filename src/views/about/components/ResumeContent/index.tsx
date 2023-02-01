@@ -60,7 +60,7 @@ const ResumeContent = () => {
           <ul className={styles.list}>
             <li className={styles.listItem}>
               <a href="https://www.wxwind.top" target="_blank" rel="noopener noreferrer" className={styles.href}>
-                <b>个人网站</b> - https://www.wxwind.top
+                <b>个人网站</b>&ensp;-&ensp;https://www.wxwind.top
               </a>
               <br />
               <a
@@ -82,13 +82,33 @@ const ResumeContent = () => {
               </a>
             </li>
             <li className={styles.listItem}>
+              <a href="http://www.wxwind.top:8080/" target="_blank" rel="noopener noreferrer" className={styles.href}>
+                <b>电商管理后台系统</b>
+              </a>
+              &ensp;-&ensp;
               <a
-                href="https://github.com/Wxwind/2DMutiPlayerGame"
+                href="https://github.com/Wxwind/vue3-shop"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.href}
               >
-                <b>射击对战游戏</b> - https://github.com/Wxwind/2DMutiPlayerGame
+                https://github.com/Wxwind/vue3-shop
+              </a>
+              <br />
+              使用Vue3+TS+Scss搭建的电商后台管理系统
+            </li>
+            <li className={styles.listItem}>
+              <a
+                href="https://www.bilibili.com/video/BV16Z4y1i7q7/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.href}
+              >
+                <b>射击对战游戏</b>
+              </a>
+              &ensp;-&ensp;
+              <a href="http://www.wxwind.top:8080/" target="_blank" rel="noopener noreferrer" className={styles.href}>
+                https://github.com/Wxwind/2DMutiPlayerGame
               </a>
               <br />
               基于快照同步的网络小游戏，前端 Unity，后端 .NET 6 ，使用 UDP+KCP 和 gRPC 实现与服务器可靠通信

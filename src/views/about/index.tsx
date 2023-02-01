@@ -2,7 +2,7 @@ import styles from "./styles.module.scss";
 import ResumeContent from "./components/ResumeContent";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileArrowDown } from "@fortawesome/free-solid-svg-icons";
-const resumeURL = "/about/resume/resume.pdf";
+const resumeURL = "/fileServer/resume/resume.pdf";
 
 const About = () => {
   return (
