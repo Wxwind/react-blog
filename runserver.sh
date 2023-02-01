@@ -15,4 +15,5 @@ docker rmi "$(docker images -f "dangling=true" -q)"
 echo "build image..."
 docker build -t $imageName . &&
     docker run -p 80:80 -d -p 443:443 --name $containerName -v /soft/react_website/react_website/deploy/nginx/nginx.conf:/etc/nginx/nginx.conf \
-        -v /soft/react_website/react_website/deploy/nginx/cert:/etc/nginx/cert $imageName
+        -v /soft/react_website/react_website/deploy/nginx/cert:/etc/nginx/cert \
+        -v /soft/react_website/react_website/deploy/nginx/sites:/etc/nginx/sites $imageName
