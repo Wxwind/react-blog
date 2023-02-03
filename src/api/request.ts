@@ -23,22 +23,23 @@ export const postData = async <Q = unknown, D = unknown>(url: string, postData: 
 };
 
 export const getData = async <D = unknown>(url: string): Promise<MyResponseType<D>> => {
-  const a = await serve.get(url);
+  const a = await serve.get<MyResponseType<D>>(url);
   const { data, meta } = a.data;
   return { data, meta };
 };
 
 export const putData = async <Q = unknown, D = unknown>(url: string, putData: Q): Promise<MyResponseType<D>> => {
-  const a = await serve.put(url, putData);
+  const a = await serve.put<MyResponseType<D>, AxiosResponse<MyResponseType<D>>, Q>(url, putData);
   const { data, meta } = a.data;
   return { data, meta };
 };
 
 export const deleteData = async <D = unknown>(url: string): Promise<MyResponseType<D>> => {
-  const a = await serve.delete(url);
+  const a = await serve.delete<MyResponseType<D>>(url);
   const { data, meta } = a.data;
   return { data, meta };
 };
+
 //请求拦截器
 serve.interceptors.request.use(
   (config) => {

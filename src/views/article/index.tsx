@@ -7,7 +7,7 @@ import CardAuthInfo from "./components/CardAuthInfo";
 import { getArticleFileURL } from "@/api/articles";
 import "github-markdown-css/github-markdown.css";
 import "./markdown.css";
-import axios from "axios";
+import { getFile } from "@/api/fileRequest";
 
 const Article = () => {
   const { articleId } = useParams();
@@ -15,21 +15,18 @@ const Article = () => {
   const tocRef = useRef(null);
 
   useEffect(() => {
-    const getfile = async () => {
+    const getfileData = async () => {
       if (articleId === undefined) return;
       let n = parseInt(articleId);
       if (Number.isNaN(n)) return;
       const res = await getArticleFileURL(n);
       if (res.data) {
-        const fileURL = "/fileServer" + res.data;
-
-        const file = await axios.get<string>(fileURL);
-        const text = await file.data;
+        const text = await getFile(res.data);
         setcurrentArticle(text);
       }
     };
 
-    getfile();
+    getfileData();
   }, [articleId]);
 
   const htmlContent = marked.parse(currentArticle);
