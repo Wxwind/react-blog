@@ -5,14 +5,6 @@ import useQuery from "@/utils/hooks/useQuery";
 import { getArticleList } from "@/api/articles";
 import Loading from "@/common/components/Loading";
 
-// type articlePreview = {
-//   title: string;
-//   particleId: number;
-//   imageURL: string;
-//   desc: string;
-//   publishTime: string;
-// };
-
 const Home = () => {
   const [data, isError, isLoading] = useQuery(getArticleList);
 
@@ -34,12 +26,12 @@ const Home = () => {
           ) : (
             data?.map((article) => (
               <PostPreview
-                particleId={article.particleId}
+                particleId={article.articleId}
                 imageURL={article.imageURL}
                 title={article.title}
                 desc={article.desc}
                 publishTime={article.publishTime}
-                key={article.particleId}
+                key={article.articleId}
               />
             ))
           )}

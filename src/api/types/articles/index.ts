@@ -1,6 +1,6 @@
 export type getArticleListResp = {
   title: string;
-  particleId: number;
+  articleId: number;
   imageURL: string;
   desc: string;
   publishTime: string;

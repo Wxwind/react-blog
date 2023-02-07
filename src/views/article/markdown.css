@@ -6,14 +6,23 @@
 .title-anchor.title-level1 {
   padding-left: 0em;
 }
+
 .title-anchor.title-level2 {
   padding-left: 0em;
 }
+
 .title-anchor.title-level3 {
   padding-left: 1em;
 }
+.title-anchor.title-level3 small{
+  padding-right: 5px;
+}
+
 .title-anchor.title-level4 {
   padding-left: 2em;
+}
+.title-anchor.title-level4 small{
+  padding-right: 5px;
 }
 
 .markdown-body blockquote {
