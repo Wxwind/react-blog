@@ -2,7 +2,7 @@ import classNames from "classnames";
 import React, { useState, useEffect, useRef } from "react";
 import { Outlet, Link } from "react-router-dom";
 import styles from "./styles.module.scss";
-import useThrottleFn from "@/utils/hooks/useThrottleFn";
+import { useThrottleFn } from "@/utils/hooks";
 
 const SHOW_MAX_TOP = 80;
 
