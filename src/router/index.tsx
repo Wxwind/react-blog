@@ -1,11 +1,11 @@
 import { createBrowserRouter, RouteObject } from "react-router-dom";
 import React from "react";
-import Menu from "@/views/menu";
+import Menu from "@/page/menu";
 import { LazyGuardRouter } from "@/router/components/LazyGuardRouter";
 
-const Article = React.lazy(() => import("@/views/article"));
-const About = React.lazy(() => import("@/views/about"));
-const Home = React.lazy(() => import("@/views/home"));
+const Article = React.lazy(() => import("@/page/article"));
+const About = React.lazy(() => import("@/page/about"));
+const Home = React.lazy(() => import("@/page/home"));
 
 const routes: RouteObject[] = [
   {

@@ -1,8 +1,8 @@
 import classNames from "classnames";
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Outlet, Link } from "react-router-dom";
 import styles from "./styles.module.scss";
-import { useThrottleFn } from "@/utils/hooks";
+import { useThrottleFn } from "ahooks";
 
 const SHOW_MAX_TOP = 80;
 
@@ -21,17 +21,20 @@ function Menu() {
   const [activeTab, setactiveTab] = useState("home");
   const [isShowOn, setisShowOn] = useState(true);
 
-  const onScroll = useThrottleFn(() => {
-    const top = document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset;
-    setisShowOn(top < SHOW_MAX_TOP);
-  }, 200);
+  const { run: onScroll } = useThrottleFn(
+    () => {
+      const top = document.documentElement.scrollTop || document.body.scrollTop;
+      setisShowOn(top < SHOW_MAX_TOP);
+    },
+    { wait: 200 }
+  );
 
   useEffect(() => {
     window.addEventListener("scroll", onScroll);
     return () => {
       window.removeEventListener("scroll", onScroll);
     };
-  }, []);
+  }, [onScroll]);
 
   return (
     <div>

@@ -17,7 +17,7 @@ const Article = () => {
   useEffect(() => {
     const getfileData = async () => {
       if (articleId === undefined) return;
-      let n = parseInt(articleId);
+      const n = parseInt(articleId);
       if (Number.isNaN(n)) return;
       const res = await getArticleFileURL(n);
       if (res.data) {

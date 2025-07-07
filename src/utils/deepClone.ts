@@ -1,4 +1,5 @@
-function isObject(a: unknown) {
+/* eslint-disable @typescript-eslint/no-explicit-any */
+function isObject(a: unknown): a is Record<string, any> {
   return a !== null && typeof a === "object";
 }
 

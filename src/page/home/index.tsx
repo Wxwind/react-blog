@@ -1,6 +1,6 @@
 import PostPreview from "./components/PostPreview";
 import styles from "./styles.module.scss";
-import useQuery from "@/utils/hooks/useQuery";
+import useQuery from "@/hooks/useQuery";
 import { getArticleList } from "@/api/articles";
 import Loading from "@/common/components/Loading";
 
