@@ -65,8 +65,7 @@ export const FacePhoto: FC = () => {
   // 拍照
   const capturePhoto = async () => {
     if (!webcamRef.current || modelLoading) return;
-
-    const imageSrc = webcamRef.current.getScreenshot();
+    const imageSrc = webcamRef.current.getScreenshot({ width: 1080, height: 720 });
     setOriginalImgSrc(imageSrc);
     setProcessedImgSrc(null);
   };
@@ -78,7 +77,6 @@ export const FacePhoto: FC = () => {
     setIsProcessing(true);
 
     try {
-      // 创建图像元素
       const img = new Image();
       img.src = originalImgSrc;
 
@@ -86,39 +84,56 @@ export const FacePhoto: FC = () => {
         const canvas = canvasRef.current!;
         const ctx = canvas.getContext("2d")!;
 
-        // 设置canvas尺寸
-        canvas.width = img.width;
-        canvas.height = img.height;
+        // 设置canvas为原始图像尺寸
+        canvas.width = img.naturalWidth;
+        canvas.height = img.naturalHeight;
 
-        // 绘制原始图像
+        // 绘制原始图像（保持原尺寸）
         ctx.drawImage(img, 0, 0);
 
-        // 使用BodyPix模型进行分割
+        // 使用BodyPix模型进行分割（提高精度）
         const segmentation = await model.segmentPerson(canvas, {
           flipHorizontal: false,
-          internalResolution: "high",
-          segmentationThreshold: 0.7,
+          internalResolution: "full", // 使用全尺寸处理
+          segmentationThreshold: 0.6, // 降低阈值包括更多边缘
+          maxDetections: 1,
         });
 
-        // 获取掩码图像数据
-        const mask = bodyPix.toMask(segmentation);
-        const maskData = ctx.createImageData(mask.width, mask.height);
-        maskData.data.set(mask.data);
+        // 修复toMask函数参数（关键修复）
+        const mask = bodyPix.toMask(
+          segmentation,
+          { r: 0, g: 0, b: 255, a: 255 }, // 前景颜色（黑色不透明）
+          { r: 0, g: 255, b: 0, a: 0 }, // 背景颜色（完全透明）
+          false // drawContour（不绘制轮廓）
+        );
 
-        // 创建蓝色背景
-        ctx.fillStyle = "rgba(0, 0, 255, 1)";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        const maskImageData = ctx.createImageData(canvas.width, canvas.height);
+        maskImageData.data.set(mask.data);
 
-        // 应用掩码保留人像
-        ctx.putImageData(maskData, 0, 0);
-        ctx.globalCompositeOperation = "source-in";
-        ctx.drawImage(img, 0, 0);
+        // 创建临时画布处理合成
+        const tempCanvas = document.createElement("canvas");
+        const tempCtx = tempCanvas.getContext("2d")!;
+        tempCanvas.width = canvas.width;
+        tempCanvas.height = canvas.height;
 
-        // 重置混合模式
-        ctx.globalCompositeOperation = "source-over";
+        // 1. 应用掩码保留人像
+        tempCtx.globalCompositeOperation = "source-over";
+        tempCtx.putImageData(maskImageData, 0, 0);
 
-        // 转换为图片URL
-        const processedImg = canvas.toDataURL("image/jpeg");
+        // 2. 绘制原始图像到有掩码的区域
+        tempCtx.globalCompositeOperation = "source-in";
+        tempCtx.drawImage(img, 0, 0);
+
+        // 3. 无掩码的区域绘制蓝色背景（完整尺寸）
+        tempCtx.globalCompositeOperation = "destination-over";
+        tempCtx.fillStyle = "rgb(0, 0, 255)";
+        tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
+
+        // 4. 重置合成操作
+        tempCtx.globalCompositeOperation = "source-over";
+
+        // 保存处理结果
+        const processedImg = tempCanvas.toDataURL("image/jpeg");
         setProcessedImgSrc(processedImg);
         setIsProcessing(false);
       };
