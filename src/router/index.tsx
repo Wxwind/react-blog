@@ -6,7 +6,7 @@ import { LazyGuardRouter } from "@/router/components/LazyGuardRouter";
 const Article = React.lazy(() => import("@/page/article"));
 const About = React.lazy(() => import("@/page/about"));
 const Home = React.lazy(() => import("@/page/home"));
-const TinyTool = React.lazy(() => import("@/page/tinytool"));
+const TinyTool = React.lazy(() => import("@/page/tiny-tool"));
 
 const routes: RouteObject[] = [
   {

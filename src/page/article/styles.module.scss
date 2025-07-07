@@ -1,4 +1,5 @@
-@import "/src/common/styles/global.scss";
+@use "/src/styles/global.scss" as global;
+
 .header {
   width: 100%;
 }
@@ -21,7 +22,7 @@
 }
 
 .post {
-  box-shadow: $card-box-shadow;
+  box-shadow: global.$card-box-shadow;
   background: rgba(255, 255, 255, 1);
   border-radius: 8px;
   padding: 50px 40px;
@@ -29,7 +30,7 @@
   width: 65%;
 
   &:hover {
-    box-shadow: $card-hover-box-shadow;
+    box-shadow: global.$card-hover-box-shadow;
   }
 }
 
@@ -43,14 +44,14 @@
 .stickyCardToc {
   position: sticky;
   top: 100px;
-  box-shadow: $card-box-shadow;
+  box-shadow: global.$card-box-shadow;
   background: rgba(255, 255, 255, 1);
   margin-top: 1rem;
   border-radius: 8px;
   padding: 1rem 1.2rem;
   font-size: 16px;
   &:hover {
-    box-shadow: $card-hover-box-shadow;
+    box-shadow: global.$card-hover-box-shadow;
   }
 }
 

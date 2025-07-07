@@ -1,14 +1,14 @@
-@import "/src/common/styles/global.scss";
+@use "/src/styles/global.scss" as global;
 
 .cardAuthInfo {
   position: relative;
-  box-shadow: $card-box-shadow;
+  box-shadow: global.$card-box-shadow;
   background: rgba(255, 255, 255, 1);
   border-radius: 8px;
   padding: 1em 1.2em;
   text-align: center;
   &:hover {
-    box-shadow: $card-hover-box-shadow;
+    box-shadow: global.$card-hover-box-shadow;
   }
 }
 
@@ -41,7 +41,7 @@
 }
 
 .faIcon {
-  font-weight: $faFontWeight;
+  font-weight: global.$faFontWeight;
   width: 14px;
 }
 

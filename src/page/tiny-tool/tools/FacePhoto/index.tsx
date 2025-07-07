@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect, FC } from "react";
 import Webcam from "react-webcam";
 import * as bodyPix from "@tensorflow-models/body-pix";
+import styles from "./styles.module.scss";
 import "@tensorflow/tfjs";
 
 export const FacePhoto: FC = () => {
@@ -128,37 +129,37 @@ export const FacePhoto: FC = () => {
   };
 
   return (
-    <div className="app">
-      <div className="header">
+    <div className={styles["app"]}>
+      <div className={styles["header"]}>
         <h1>AI背景替换工具</h1>
         <p>使用TensorFlow.js智能识别人体轮廓，替换为蓝色背景</p>
       </div>
 
       {modelLoading ? (
-        <div className="model-loading">
-          <div className="loading-bar">
-            <div className="loading-progress" style={{ width: `${modelProgress}%` }}></div>
+        <div className={styles["model-loading"]}>
+          <div className={styles["loading-bar"]}>
+            <div className={styles["loading-progress"]} style={{ width: `${modelProgress}%` }}></div>
           </div>
           <p>正在加载AI模型... {modelProgress}%</p>
           <p>首次加载可能需要较长时间(约30秒)，请耐心等待</p>
-          <div className="model-info">
+          <div className={styles["model-info"]}>
             <p>使用技术：TensorFlow.js + BodyPix模型</p>
             <p>模型大小：约10MB（已在下载中）</p>
           </div>
         </div>
       ) : (
-        <div className="app-container">
-          <div className="camera-container">
+        <div className={styles["app-container"]}>
+          <div className={styles["camera-container"]}>
             {isCameraOn ? (
-              <div className="camera-preview">
+              <div className={styles["camera-preview"]}>
                 <Webcam
                   audio={false}
                   ref={webcamRef}
                   screenshotFormat="image/jpeg"
                   videoConstraints={{ facingMode: "user" }}
-                  className="webcam"
+                  className={styles["webcam"]}
                 />
-                <div className="controls">
+                <div className={styles["controls"]}>
                   <button onClick={capturePhoto} disabled={isProcessing}>
                     拍照
                   </button>
@@ -166,7 +167,7 @@ export const FacePhoto: FC = () => {
                 </div>
               </div>
             ) : (
-              <div className="camera-off">
+              <div className={styles["camera-off"]}>
                 <button onClick={startCamera}>开启摄像头</button>
                 <p>请在光线充足的环境下拍照</p>
                 <p>支持复杂背景下的智能分割</p>
@@ -177,23 +178,27 @@ export const FacePhoto: FC = () => {
             <canvas ref={canvasRef} style={{ display: "none" }} />
           </div>
 
-          <div className="results-container">
-            <div className="result-card">
+          <div className={styles["results-container"]}>
+            <div className={styles["result-card"]}>
               <h2>原始照片</h2>
               {originalImgSrc ? (
-                <img src={originalImgSrc} alt="原始照片" className="original-photo" />
+                <img src={originalImgSrc} alt="原始照片" className={styles["original-photo"]} />
               ) : (
-                <div className="placeholder">
-                  <div className="placeholder-content">等待拍照...</div>
+                <div className={styles["placeholder"]}>
+                  <div className={styles["placeholder-content"]}>等待拍照...</div>
                 </div>
               )}
             </div>
 
-            <div className="process-btn-container">
-              <button onClick={processPhoto} disabled={!originalImgSrc || isProcessing} className="process-btn">
+            <div className={styles["process-btn-container"]}>
+              <button
+                onClick={processPhoto}
+                disabled={!originalImgSrc || isProcessing}
+                className={styles["process-btn"]}
+              >
                 {isProcessing ? (
-                  <div className="processing">
-                    <div className="spinner"></div>
+                  <div className={styles["processing"]}>
+                    <div className={styles["spinner"]}></div>
                     AI处理中...
                   </div>
                 ) : (
@@ -202,39 +207,39 @@ export const FacePhoto: FC = () => {
               </button>
             </div>
 
-            <div className="result-card">
+            <div className={styles["result-card"]}>
               <h2>处理后照片</h2>
               {processedImgSrc ? (
-                <div className="result-content">
-                  <img src={processedImgSrc} alt="处理后照片" className="processed-photo" />
-                  <a href={processedImgSrc} download="blue-background-photo.jpg" className="download-btn">
+                <div className={styles["result-content"]}>
+                  <img src={processedImgSrc} alt="处理后照片" className={styles["processed-photo"]} />
+                  <a href={processedImgSrc} download="blue-background-photo.jpg" className={styles["download-btn"]}>
                     下载照片
                   </a>
                 </div>
               ) : (
-                <div className="placeholder">
-                  <div className="placeholder-content blue">蓝色背景预览</div>
-                  <p className="placeholder-text">照片处理后将会显示在这里</p>
+                <div className={styles["placeholder"]}>
+                  <div className={styles["placeholder-content blue"]}>蓝色背景预览</div>
+                  <p className={styles["placeholder-text"]}>照片处理后将会显示在这里</p>
                 </div>
               )}
             </div>
           </div>
 
-          <div className="tech-info">
+          <div className={styles["tech-info"]}>
             <h3>技术说明</h3>
-            <div className="tech-points">
-              <div className="tech-card">
-                <div className="tech-icon">🤖</div>
+            <div className={styles["tech-points"]}>
+              <div className={styles["tech-card"]}>
+                <div className={styles["tech-icon"]}>🤖</div>
                 <h4>AI人体分割</h4>
                 <p>使用TensorFlow.js BodyPix模型精准识别照片中的人物轮廓</p>
               </div>
-              <div className="tech-card">
-                <div className="tech-icon">🎯</div>
+              <div className={styles["tech-card"]}>
+                <div className={styles["tech-icon"]}>🎯</div>
                 <h4>复杂背景处理</h4>
                 <p>可处理各种复杂背景，无需绿幕也能获得专业效果</p>
               </div>
-              <div className="tech-card">
-                <div className="tech-icon">⚡</div>
+              <div className={styles["tech-card"]}>
+                <div className={styles["tech-icon"]}>⚡</div>
                 <h4>浏览器端处理</h4>
                 <p>照片处理完全在浏览器中完成，保护用户隐私</p>
               </div>

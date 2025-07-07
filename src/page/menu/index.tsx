@@ -15,6 +15,10 @@ const menuItems = [
     name: "简历",
     url: "/about",
   },
+  {
+    name: "小工具",
+    url: "/tiny-tool",
+  },
 ];
 
 export default function Menu() {
