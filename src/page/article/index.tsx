@@ -1,17 +1,17 @@
 import { useParams } from "react-router-dom";
 import styles from "./styles.module.scss";
-import React, { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import { marked } from "marked";
 import MarkdownNavbar from "markdown-navbar";
-import CardAuthInfo from "./components/CardAuthInfo";
+import { CardAuthInfo } from "./components/CardAuthInfo";
 import { getArticleFileURL } from "@/api/articles";
 import "github-markdown-css/github-markdown.css";
 import "./markdown.css";
 import { getFile } from "@/api/fileRequest";
 
-const Article = () => {
+export default function Article() {
   const { articleId } = useParams();
-  const [currentArticle, setcurrentArticle] = useState("");
+  const [currentArticle, setCurrentArticle] = useState("");
   const tocRef = useRef(null);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const Article = () => {
       const res = await getArticleFileURL(n);
       if (res.data) {
         const text = await getFile(res.data);
-        setcurrentArticle(text);
+        setCurrentArticle(text);
       }
     };
 
@@ -52,6 +52,4 @@ const Article = () => {
       </main>
     </div>
   );
-};
-
-export default Article;
+}

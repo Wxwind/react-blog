@@ -14,7 +14,7 @@ const getParticleUrl = (particleId: number) => {
   return `/article/${particleId}`;
 };
 
-function PostPreview({ title, particleId, imageURL, desc, publishTime }: props) {
+export function PostPreview({ title, particleId, imageURL, desc, publishTime }: props) {
   const url = getParticleUrl(particleId);
 
   return (
@@ -32,5 +32,3 @@ function PostPreview({ title, particleId, imageURL, desc, publishTime }: props) 
     </div>
   );
 }
-
-export default PostPreview;

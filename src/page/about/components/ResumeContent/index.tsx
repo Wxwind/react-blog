@@ -1,7 +1,6 @@
-import React from "react";
 import styles from "./styles.module.scss";
 
-const ResumeContent = () => {
+export function ResumeContent() {
   return (
     <div className={styles.resumeContent}>
       <section>
@@ -118,6 +117,4 @@ const ResumeContent = () => {
       </section>
     </div>
   );
-};
-
-export default ResumeContent;
+}

@@ -1,10 +1,10 @@
 import styles from "./styles.module.scss";
-import ResumeContent from "./components/ResumeContent";
+import { ResumeContent } from "./components/ResumeContent";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileArrowDown } from "@fortawesome/free-solid-svg-icons";
 const resumeURL = "https://assets.wxwind.top/static/resume/resume.pdf";
 
-const About = () => {
+export default function About() {
   return (
     <div className={styles.bgImage}>
       <div className={styles.download}>
@@ -18,6 +18,4 @@ const About = () => {
       </div>
     </div>
   );
-};
-
-export default About;
+}

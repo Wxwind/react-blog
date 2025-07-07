@@ -17,7 +17,7 @@ const menuItems = [
   },
 ];
 
-function Menu() {
+export default function Menu() {
   const [activeTab, setactiveTab] = useState("home");
   const [isShowOn, setisShowOn] = useState(true);
 
@@ -58,5 +58,3 @@ function Menu() {
     </div>
   );
 }
-
-export default Menu;

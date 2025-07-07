@@ -1,10 +1,10 @@
-import PostPreview from "./components/PostPreview";
+import { PostPreview } from "./components/PostPreview";
 import styles from "./styles.module.scss";
 import useQuery from "@/hooks/useQuery";
 import { getArticleList } from "@/api/articles";
-import Loading from "@/common/components/Loading";
+import { Loading } from "@/components/Loading";
 
-const Home = () => {
+export default function Home() {
   const [data, isError, isLoading] = useQuery(getArticleList);
 
   return (
@@ -44,6 +44,4 @@ const Home = () => {
       </div>
     </div>
   );
-};
-
-export default Home;
+}

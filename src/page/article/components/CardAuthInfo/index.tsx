@@ -1,10 +1,9 @@
-import React from "react";
 import styles from "./styles.module.scss";
 import avatarImg from "@/assets/images/avatar.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
-function CardAuthInfo() {
+export function CardAuthInfo() {
   return (
     <div className={styles.cardAuthInfo}>
       <div>
@@ -18,5 +17,3 @@ function CardAuthInfo() {
     </div>
   );
 }
-
-export default CardAuthInfo;
