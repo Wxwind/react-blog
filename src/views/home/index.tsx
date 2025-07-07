@@ -1,4 +1,3 @@
-import React, { useState, useEffect, useRef } from "react";
 import PostPreview from "./components/PostPreview";
 import styles from "./styles.module.scss";
 import useQuery from "@/utils/hooks/useQuery";
